@@ -1,4 +1,17 @@
 # Full Stack Todo App with Vue js
-### Technologies made with express js at the backend, nedb for the database , vue js for the front end!
+---
+
+### Front end technologies
+---
+* vue js
+
+### Back end technologies
+---
+*  **experss js** - for server
+*  **nedb**       - for database
+
+
+` npm install express cors `
+
 
 
