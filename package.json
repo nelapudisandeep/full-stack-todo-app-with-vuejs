@@ -1,0 +1,21 @@
+{
+  "name": "vue-js",
+  "version": "1.0.0",
+  "description": "this is a full stack todo app using vue js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "nelapudi sandeep",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "date-fns": "^2.15.0",
+    "express": "^4.17.1",
+    "nedb": "^1.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
