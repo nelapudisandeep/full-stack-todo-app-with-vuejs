@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Todo app with vue js</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        *{
+            transition: 0.5s ease all;
+        }
+        html,body{
+            width:100%;
+            min-height: 100vh;
+            background: url('./images/karsten-wurth-7BjhtdogU3A-unsplash.jpg') no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lineThrough{
+            color:#ccc;
+            text-decoration: line-through;
+        }
+        #app{
+            width:100%;
+            min-height: 100vh;
+            background: rgba(0,0,0,0.8);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 class="text-center text-white mt-3 mb-3">Tooody</h1>
+        <form class="container" autocomplete="off">
+            <div class="form-group">
+              <label for="todo" class="text-white">Add new todo</label>
+              <input v-model='todo' type="text" class="form-control" id="todo" placeholder="enter a new todo...">
+            </div>
+            <p class="text-center text-white">{{todo}}</p>
+            <button type="submit" @click.prevent = "addTodo" class="btn btn-outline-warning rounded-sm ">Add</button>
+          </form>
+
+          <!-- deleting all todos! -->
+          <div class="container mt-3 " v-if="todosWithId.length">
+            <button class="rounded-sm btn btn-outline-warning" @click.prevent ="deleteAllTodos" >Delete all</button>
+          </div>
+
+          <!-- goes as alert here! -->
+          <div class="alert mt-3 rounded-sm container" :class="{ 'alert-danger': dangerClass, 'alert-success': successClass }" role="alert" v-if="isAlertOn" >
+            {{alertText}}
+          </div>
+
+          <!-- listing all todos! -->
+          <ul class="list-group container mt-3">
+              <h1 v-if="todosWithId.length" class="text-center text-white">All todos</h1>
+              <li v-for="(todo,index) in todosWithId" :key="todo._id"   class="mt-1  rounded-sm list-group-item bg-dark text-white d-flex justify-content-between align-items-center">
+               <p> 
+                <span :class="{lineThrough : todo.status}">{{todo.content}}</span>
+                <span class="badge badge-info badge-pill ml-2"> {{todo.badgeText}} ago</span>
+              </p>
+                <div class="flex-container">
+                    <a href="#" @click="todoDone(todo)" class="text-decoration-none mr-1">
+                        <span class="material-icons text-success" v-if="!todo.status">
+                            done
+                        </span>
+                        <span class="material-icons text-success" v-if="todo.status">
+                            check_circle
+                        </span>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons text-danger ml-1" @click.prevent="deleteTodo(index,todo)">
+                            delete
+                        </span>
+                    </a>
+                </div>
+            </li>
+          </ul>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
