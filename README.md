@@ -32,7 +32,7 @@
 
 ###### error handling 
   * [x] add an error for the following cases
-    * [x] cannoot delete single item
+    * [x] cannot delete single item
     * [x] cannot delete all items
     * [x] cannot update item's state
     * [x] cannot add item to the database
